@@ -4,6 +4,8 @@ set -o errexit
 set -o pipefail
 set -o nounset
 
+dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
 export CONNECT_URL="http://$CONNECT_REST_ADVERTISED_HOST_NAME:$CONNECT_REST_PORT"
 export CONNECTORS_URL="$CONNECT_URL/connectors"
 
@@ -20,5 +22,5 @@ done
 echo "Sleep 10 seconds to make sure REST really is up"
 sleep 10
 echo -e "\n--\n+> Creating Connectors"
-./create-connectors.sh "$CONNECTORS_FILEPATH"
+"$dir"/create-connectors.sh "$CONNECTORS_FILEPATH"
 sleep infinity

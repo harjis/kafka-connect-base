@@ -4,10 +4,10 @@
     "config": {
       "tasks.max": "1",
       "connector.class": "com.github.jcustenborder.kafka.connect.spooldir.SpoolDirSchemaLessJsonSourceConnector",
-      "input.path": "/connect-base",
+      "input.path": "/spooldir-connect-base/test/data",
       "input.file.pattern": "customers.json",
-      "error.path": "/connect-base/error",
-      "finished.path": "/connect-base/finished",
+      "error.path": "/spooldir-connect-base/test/data/error",
+      "finished.path": "/spooldir-connect-base/test/data/finished",
       "halt.on.error": "false",
       "topic": "customers",
       "value.converter": "org.apache.kafka.connect.storage.StringConverter"
@@ -18,10 +18,10 @@
     "config": {
       "tasks.max": "1",
       "connector.class": "com.github.jcustenborder.kafka.connect.spooldir.SpoolDirSchemaLessJsonSourceConnector",
-      "input.path": "/connect-base",
+      "input.path": "/spooldir-connect-base/test/data",
       "input.file.pattern": "orders.json",
-      "error.path": "/connect-base/error",
-      "finished.path": "/connect-base/finished",
+      "error.path": "/spooldir-connect-base/test/data/error",
+      "finished.path": "/spooldir-connect-base/test/data/finished",
       "halt.on.error": "false",
       "topic": "orders",
       "value.converter": "org.apache.kafka.connect.storage.StringConverter"

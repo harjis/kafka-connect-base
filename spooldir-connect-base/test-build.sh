@@ -8,6 +8,10 @@ dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 docker build \
   -t d0rka/connect-base \
+  "$dir/../connect-base"
+
+docker build \
+  -t d0rka/spooldir-connect-base \
   "$dir"
 
 # https://docs.docker.com/config/containers/container-networking/#ip-address-and-hostname
@@ -31,5 +35,7 @@ docker run \
   --env CONNECT_VALUE_CONVERTER_SCHEMAS_ENABLE=false \
   --env CONNECT_REST_ADVERTISED_HOST_NAME=connect-base \
   --env CONNECT_REST_PORT=18083 \
+  --env CONNECTORS_FILEPATH=/spooldir-connect-base/test/connectors/test-connectors.json \
+  -v "$dir/test:/spooldir-connect-base/test" \
   -it \
-  d0rka/connect-base
+  d0rka/spooldir-connect-base
