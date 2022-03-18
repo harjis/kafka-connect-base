@@ -51,7 +51,7 @@ jobs:
             d0rka/spooldir-connect-base:latest
             d0rka/spooldir-connect-base:${{ env.VERSION }}
 
-      - name: Build and push connect-base
+      - name: Build and push jdbc-connect-base
         id: docker_build_jdbc
         uses: docker/build-push-action@v2
         with:
