@@ -13,7 +13,7 @@ docker build \
   "$dir/../connect-base"
 
 docker build \
-  -t d0rka/spooldir-connect-base \
+  -t d0rka/jdbc-connect-base \
   --build-arg CONNECT_BASE_VERSION="$CONNECT_BASE_VERSION" \
   "$dir"
 
@@ -21,8 +21,8 @@ docker build \
 # hostname connect-base AND CONNECT_REST_ADVERTISED_HOST_NAME=connect-base need to match
 docker run \
   --rm \
-  --name connect-base \
-  --hostname connect-base \
+  --name jdbc-connect-base \
+  --hostname jdbc-connect-base \
   --add-host=host.docker.internal:host-gateway \
   --env CONNECT_BOOTSTRAP_SERVERS=host.docker.internal:9093 \
   --env CONNECT_GROUP_ID=1 \
@@ -36,9 +36,9 @@ docker run \
   --env CONNECT_VALUE_CONVERTER=org.apache.kafka.connect.storage.StringConverter \
   --env CONNECT_KEY_CONVERTER_SCHEMAS_ENABLE=false \
   --env CONNECT_VALUE_CONVERTER_SCHEMAS_ENABLE=false \
-  --env CONNECT_REST_ADVERTISED_HOST_NAME=connect-base \
+  --env CONNECT_REST_ADVERTISED_HOST_NAME=jdbc-connect-base \
   --env CONNECT_REST_PORT=18083 \
-  --env CONNECTORS_FILEPATH=/spooldir-connect-base/test/connectors/test-connectors.json \
-  -v "$dir/test:/spooldir-connect-base/test" \
+  --env CONNECTORS_FILEPATH=/jdbc-connect-base/test/connectors/test-connectors.json \
+  -v "$dir/test:/jdbc-connect-base/test" \
   -it \
-  d0rka/spooldir-connect-base
+  d0rka/jdbc-connect-base

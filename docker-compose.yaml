@@ -61,3 +61,15 @@ services:
       KAFKA_BROKERS: kafka:29092
       KAFKA_SCHEMAREGISTRY_ENABLED: "true"
       KAFKA_SCHEMAREGISTRY_URLS: "http://schema-registry:8081"
+
+  postgres:
+    image: postgres:12
+    hostname: postgres
+    container_name: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - ./db-scripts/initialize.sql:/docker-entrypoint-initdb.d/initialize.sql
