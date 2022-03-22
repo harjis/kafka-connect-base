@@ -74,3 +74,15 @@ jobs:
           tags: |
             d0rka/debezium-postgres-connect-base:latest
             d0rka/debezium-postgres-connect-base:${{ env.CONNECT_BASE_VERSION }}
+
+      - name: Build and push jdbc-debezium-postgres-connect-base
+        id: docker_build_jdbc_debezium
+        uses: docker/build-push-action@v2
+        with:
+          build-args: CONNECT_BASE_VERSION=${{ env.CONNECT_BASE_VERSION }}
+          context: ./jdbc-debezium-postgres-connect-base
+          file: ./jdbc-debezium-postgres-connect-base/Dockerfile
+          push: true
+          tags: |
+            d0rka/jdbc-debezium-postgres-connect-base:latest
+            d0rka/jdbc-debezium-postgres-connect-base:${{ env.CONNECT_BASE_VERSION }}
